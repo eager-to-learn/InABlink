@@ -62,7 +62,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="srH-Ew-ndX" secondAttribute="trailing" constant="-16" id="afE-YB-5d6"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" id="93p-9c-2CB"/>
+                    <tabBarItem key="tabBarItem" title="Map" selectedImage="pin-map-7" id="93p-9c-2CB"/>
                     <connections>
                         <outlet property="mapView" destination="srH-Ew-ndX" id="Dyy-9l-SDj"/>
                     </connections>
@@ -84,7 +84,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="No Judgement Call" id="Gj8-i6-4ME"/>
+                    <tabBarItem key="tabBarItem" title="No Judgement Call" selectedImage="telephone-7" id="Gj8-i6-4ME"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U0F-8o-ihX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -103,13 +103,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Surveys" id="Oks-0z-rkN"/>
+                    <tabBarItem key="tabBarItem" title="Surveys" selectedImage="book-cover-tick-7" id="Oks-0z-rkN"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rPt-VF-DHr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1508" y="939"/>
         </scene>
-        <!--Settings-->
+        <!--View Controller-->
         <scene sceneID="Yqw-2N-hxo">
             <objects>
                 <viewController id="LGN-mF-Vcc" sceneMemberID="viewController">
@@ -122,7 +122,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" id="T7f-pJ-0mv"/>
+                    <tabBarItem key="tabBarItem" systemItem="more" id="T7f-pJ-0mv"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MnJ-K6-hPg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -149,4 +149,9 @@
             <point key="canvasLocation" x="828" y="133.5832083958021"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="book-cover-tick-7" width="30" height="30"/>
+        <image name="pin-map-7" width="30" height="30"/>
+        <image name="telephone-7" width="30" height="30"/>
+    </resources>
 </document>
