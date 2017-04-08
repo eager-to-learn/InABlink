@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E74059E1E99603300974FD4 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E74059B1E99603300974FD4 /* Utilities.swift */; };
+		0E7405A21E996C1E00974FD4 /* AddGeotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E74059F1E996C1E00974FD4 /* AddGeotificationViewController.swift */; };
+		0E7405A31E996C1E00974FD4 /* Geotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7405A01E996C1E00974FD4 /* Geotification.swift */; };
+		0E7405A41E996C1E00974FD4 /* GeotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7405A11E996C1E00974FD4 /* GeotificationsViewController.swift */; };
 		A505778B1E92C737001A48EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A505778A1E92C737001A48EA /* AppDelegate.swift */; };
 		A505778D1E92C737001A48EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A505778C1E92C737001A48EA /* ViewController.swift */; };
 		A50577901E92C737001A48EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A505778E1E92C737001A48EA /* Main.storyboard */; };
@@ -15,7 +19,6 @@
 		A50577981E92C737001A48EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A50577961E92C737001A48EA /* LaunchScreen.storyboard */; };
 		A50577A31E92C737001A48EA /* InABlinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50577A21E92C737001A48EA /* InABlinkTests.swift */; };
 		A50577AE1E92C737001A48EA /* InABlinkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50577AD1E92C737001A48EA /* InABlinkUITests.swift */; };
-		A50577BC1E92D1BA001A48EA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50577BB1E92D1BA001A48EA /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E74059B1E99603300974FD4 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		0E74059F1E996C1E00974FD4 /* AddGeotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGeotificationViewController.swift; sourceTree = "<group>"; };
+		0E7405A01E996C1E00974FD4 /* Geotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geotification.swift; sourceTree = "<group>"; };
+		0E7405A11E996C1E00974FD4 /* GeotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeotificationsViewController.swift; sourceTree = "<group>"; };
 		A50577871E92C737001A48EA /* InABlink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InABlink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A505778A1E92C737001A48EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A505778C1E92C737001A48EA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -50,7 +57,6 @@
 		A50577A91E92C737001A48EA /* InABlinkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InABlinkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A50577AD1E92C737001A48EA /* InABlinkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InABlinkUITests.swift; sourceTree = "<group>"; };
 		A50577AF1E92C737001A48EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A50577BB1E92D1BA001A48EA /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +107,10 @@
 		A50577891E92C737001A48EA /* InABlink */ = {
 			isa = PBXGroup;
 			children = (
+				0E74059F1E996C1E00974FD4 /* AddGeotificationViewController.swift */,
+				0E7405A01E996C1E00974FD4 /* Geotification.swift */,
+				0E7405A11E996C1E00974FD4 /* GeotificationsViewController.swift */,
+				0E74059B1E99603300974FD4 /* Utilities.swift */,
 				A505778A1E92C737001A48EA /* AppDelegate.swift */,
 				A505778C1E92C737001A48EA /* ViewController.swift */,
 				A505778E1E92C737001A48EA /* Main.storyboard */,
@@ -108,7 +118,6 @@
 				A50577961E92C737001A48EA /* LaunchScreen.storyboard */,
 				A50577991E92C737001A48EA /* Info.plist */,
 				A50577911E92C737001A48EA /* InABlink.xcdatamodeld */,
-				A50577BB1E92D1BA001A48EA /* MapViewController.swift */,
 			);
 			path = InABlink;
 			sourceTree = "<group>";
@@ -199,6 +208,7 @@
 				TargetAttributes = {
 					A50577861E92C737001A48EA = {
 						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = 5599544L8U;
 						ProvisioningStyle = Automatic;
 					};
 					A505779D1E92C737001A48EA = {
@@ -266,9 +276,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A505778D1E92C737001A48EA /* ViewController.swift in Sources */,
+				0E7405A41E996C1E00974FD4 /* GeotificationsViewController.swift in Sources */,
 				A50577931E92C737001A48EA /* InABlink.xcdatamodeld in Sources */,
+				0E74059E1E99603300974FD4 /* Utilities.swift in Sources */,
+				0E7405A31E996C1E00974FD4 /* Geotification.swift in Sources */,
+				0E7405A21E996C1E00974FD4 /* AddGeotificationViewController.swift in Sources */,
 				A505778B1E92C737001A48EA /* AppDelegate.swift in Sources */,
-				A50577BC1E92D1BA001A48EA /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +435,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5599544L8U;
 				INFOPLIST_FILE = InABlink/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -435,6 +449,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5599544L8U;
 				INFOPLIST_FILE = InABlink/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
