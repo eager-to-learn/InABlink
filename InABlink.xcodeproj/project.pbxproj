@@ -16,6 +16,8 @@
 		A50577A31E92C737001A48EA /* InABlinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50577A21E92C737001A48EA /* InABlinkTests.swift */; };
 		A50577AE1E92C737001A48EA /* InABlinkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50577AD1E92C737001A48EA /* InABlinkUITests.swift */; };
 		A50577BC1E92D1BA001A48EA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50577BB1E92D1BA001A48EA /* MapViewController.swift */; };
+		CCB7C3F21E995F1700659A9A /* CallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB7C3F11E995F1700659A9A /* CallViewController.swift */; };
+		CCB7C3F41E996A3500659A9A /* AddCallVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB7C3F31E996A3500659A9A /* AddCallVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		A50577AD1E92C737001A48EA /* InABlinkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InABlinkUITests.swift; sourceTree = "<group>"; };
 		A50577AF1E92C737001A48EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A50577BB1E92D1BA001A48EA /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		CCB7C3F11E995F1700659A9A /* CallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallViewController.swift; sourceTree = "<group>"; };
+		CCB7C3F31E996A3500659A9A /* AddCallVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCallVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,8 @@
 				A505778A1E92C737001A48EA /* AppDelegate.swift */,
 				A505778C1E92C737001A48EA /* ViewController.swift */,
 				A505778E1E92C737001A48EA /* Main.storyboard */,
+				CCB7C3F31E996A3500659A9A /* AddCallVC.swift */,
+				CCB7C3F11E995F1700659A9A /* CallViewController.swift */,
 				A50577941E92C737001A48EA /* Assets.xcassets */,
 				A50577961E92C737001A48EA /* LaunchScreen.storyboard */,
 				A50577991E92C737001A48EA /* Info.plist */,
@@ -267,7 +273,9 @@
 			files = (
 				A505778D1E92C737001A48EA /* ViewController.swift in Sources */,
 				A50577931E92C737001A48EA /* InABlink.xcdatamodeld in Sources */,
+				CCB7C3F41E996A3500659A9A /* AddCallVC.swift in Sources */,
 				A505778B1E92C737001A48EA /* AppDelegate.swift in Sources */,
+				CCB7C3F21E995F1700659A9A /* CallViewController.swift in Sources */,
 				A50577BC1E92D1BA001A48EA /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
