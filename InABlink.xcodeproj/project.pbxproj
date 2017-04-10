@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1BF875D91E995BCA009A32AF /* SurveyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF875D81E995BCA009A32AF /* SurveyListViewController.swift */; };
+		1BF875DB1E995C5D009A32AF /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF875DA1E995C5D009A32AF /* Survey.swift */; };
+		1BF875DD1E995D5E009A32AF /* SurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF875DC1E995D5E009A32AF /* SurveyViewController.swift */; };
+		1BF875DF1E996693009A32AF /* SurveyListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF875DE1E996693009A32AF /* SurveyListCell.swift */; };
+		1BF875E11E996FF9009A32AF /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF875E01E996FF9009A32AF /* QuestionTableViewCell.swift */; };
+		1BF875E31E997796009A32AF /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF875E21E997796009A32AF /* Question.swift */; };
 		A505778B1E92C737001A48EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A505778A1E92C737001A48EA /* AppDelegate.swift */; };
 		A505778D1E92C737001A48EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A505778C1E92C737001A48EA /* ViewController.swift */; };
 		A50577901E92C737001A48EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A505778E1E92C737001A48EA /* Main.storyboard */; };
@@ -36,6 +42,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1BF875D81E995BCA009A32AF /* SurveyListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyListViewController.swift; sourceTree = "<group>"; };
+		1BF875DA1E995C5D009A32AF /* Survey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
+		1BF875DC1E995D5E009A32AF /* SurveyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyViewController.swift; sourceTree = "<group>"; };
+		1BF875DE1E996693009A32AF /* SurveyListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyListCell.swift; sourceTree = "<group>"; };
+		1BF875E01E996FF9009A32AF /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
+		1BF875E21E997796009A32AF /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		A50577871E92C737001A48EA /* InABlink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InABlink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A505778A1E92C737001A48EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A505778C1E92C737001A48EA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +121,12 @@
 				A50577991E92C737001A48EA /* Info.plist */,
 				A50577911E92C737001A48EA /* InABlink.xcdatamodeld */,
 				A50577BB1E92D1BA001A48EA /* MapViewController.swift */,
+				1BF875D81E995BCA009A32AF /* SurveyListViewController.swift */,
+				1BF875DE1E996693009A32AF /* SurveyListCell.swift */,
+				1BF875DC1E995D5E009A32AF /* SurveyViewController.swift */,
+				1BF875E01E996FF9009A32AF /* QuestionTableViewCell.swift */,
+				1BF875E21E997796009A32AF /* Question.swift */,
+				1BF875DA1E995C5D009A32AF /* Survey.swift */,
 			);
 			path = InABlink;
 			sourceTree = "<group>";
@@ -266,9 +284,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				A505778D1E92C737001A48EA /* ViewController.swift in Sources */,
+				1BF875DF1E996693009A32AF /* SurveyListCell.swift in Sources */,
+				1BF875DD1E995D5E009A32AF /* SurveyViewController.swift in Sources */,
+				1BF875E31E997796009A32AF /* Question.swift in Sources */,
+				1BF875DB1E995C5D009A32AF /* Survey.swift in Sources */,
 				A50577931E92C737001A48EA /* InABlink.xcdatamodeld in Sources */,
 				A505778B1E92C737001A48EA /* AppDelegate.swift in Sources */,
 				A50577BC1E92D1BA001A48EA /* MapViewController.swift in Sources */,
+				1BF875E11E996FF9009A32AF /* QuestionTableViewCell.swift in Sources */,
+				1BF875D91E995BCA009A32AF /* SurveyListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
