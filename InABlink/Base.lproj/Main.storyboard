@@ -11,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Landing View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="InABlink" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LandingViewController" customModule="InABlink" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -24,20 +24,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcD-8k-DhT">
-                                <rect key="frame" x="147" y="318" width="80" height="30"/>
+                                <rect key="frame" x="169" y="318" width="37" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Get Started"/>
+                                <state key="normal" title="Enter"/>
                                 <connections>
                                     <segue destination="KYg-WZ-hni" kind="show" id="WAB-3p-iKT"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="InABlink" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bbp-hr-MOT">
+                                <rect key="frame" x="112.5" y="28" width="150" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="GbY-La-OSg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Bbp-hr-MOT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="2CP-NR-pKl"/>
+                            <constraint firstItem="Bbp-hr-MOT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qOP-UU-Bjg"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="110" y="134"/>
+            <point key="canvasLocation" x="109.59999999999999" y="133.5832083958021"/>
         </scene>
         <!--Geotifications (0)-->
         <scene sceneID="PPm-zJ-EEh">
@@ -52,7 +65,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fP9-ox-VWa">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <connections>
                                     <outlet property="delegate" destination="LYI-dq-R4y" id="Yn5-hw-yjr"/>
                                 </connections>
@@ -69,7 +82,7 @@
                     <navigationItem key="navigationItem" title="Geotifications (0)" id="dS8-nZ-3oV">
                         <barButtonItem key="leftBarButtonItem" image="CurrentLocation" id="FIG-L9-xbZ">
                             <connections>
-                                <action selector="zoomToCurrentLocation:" destination="LYI-dq-R4y" id="S5q-Qq-Anw"/>
+                                <action selector="zoomToCurrentLocationWithSender:" destination="LYI-dq-R4y" id="Ww0-uF-78e"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="8yu-XQ-amA">
@@ -230,7 +243,7 @@
                         <rightBarButtonItems>
                             <barButtonItem title="Add" id="Zqz-jV-nhQ">
                                 <connections>
-                                    <action selector="onAdd:" destination="WOc-Kh-RdY" id="IEM-Fz-qdg"/>
+                                    <action selector="onAdd:" destination="WOc-Kh-RdY" id="iTT-Jl-Mi7"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="CurrentLocation" id="cLD-qt-jBr" userLabel="CurrentLocation">
@@ -284,7 +297,7 @@
                         <color key="backgroundColor" red="0.020403565966107338" green="0.74438848350253806" blue="0.44839219753578363" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="Wfl-h3-JEn">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="JAs-qT-etD">
+                        <barButtonItem key="rightBarButtonItem" id="JAs-qT-etD">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="h40-O0-k87">
                                 <rect key="frame" x="276" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

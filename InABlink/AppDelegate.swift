@@ -7,16 +7,26 @@
 //
 
 import UIKit
+import UserNotifications
 import CoreData
+import CoreLocation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    let locationManager = CLLocationManager()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+            // Enable or disable features based on authorization
+        }
+        center.removeAllPendingNotificationRequests()
         return true
     }
 
@@ -88,6 +98,56 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    func note(fromRegionIdentifier identifier: String) -> String? {
+        let savedItems = UserDefaults.standard.array(forKey: PreferencesKeys.savedItems) as? [NSData]
+        let geotifications = savedItems?.map { NSKeyedUnarchiver.unarchiveObject(with: $0 as Data) as? Geotification }
+        let index = geotifications?.index { $0?.identifier == identifier }
+        return index != nil ? geotifications?[index!]?.note : nil
+    }
+    func testFunc() {
+        print("notified")
+    }
+    
+    func handleEvent(forRegion region: CLRegion!) {
+        // Show an alert if application is active
+        /*if UIApplication.shared.applicationState == .active {
+            guard let message = note(fromRegionIdentifier: region.identifier) else { return }
+            window?.rootViewController?.showAlert(withTitle: nil, message: message)
+        } else {*/
+            // Otherwise present a local notification
+        
+            let center = NotificationCenter.default
+            center.addObserver(self, selector: #selector(testFunc), name: NSNotification.Name(rawValue: "Geofence Alert"), object: nil)
+            center.post(name: NSNotification.Name(rawValue: "Geofence Alert"), object: nil)
+            /*let notification = UILocalNotification()
+            notification.alertBody = note(fromRegionIdentifier: region.identifier)
+            notification.soundName = "Default"
+            UIApplication.shared.presentLocalNotificationNow(notification)*/
+        //}
+    }
 
 }
+
+
+extension AppDelegate: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        print(locationManager.requestState(for: region))
+        if region is CLCircularRegion {
+            handleEvent(forRegion: region)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+        print(locationManager.requestState(for: region))
+        if region is CLCircularRegion {
+            handleEvent(forRegion: region)
+        }
+    }
+    
+}
+
+
+
 

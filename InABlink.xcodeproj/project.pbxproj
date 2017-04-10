@@ -12,7 +12,7 @@
 		0E7405A31E996C1E00974FD4 /* Geotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7405A01E996C1E00974FD4 /* Geotification.swift */; };
 		0E7405A41E996C1E00974FD4 /* GeotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7405A11E996C1E00974FD4 /* GeotificationsViewController.swift */; };
 		A505778B1E92C737001A48EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A505778A1E92C737001A48EA /* AppDelegate.swift */; };
-		A505778D1E92C737001A48EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A505778C1E92C737001A48EA /* ViewController.swift */; };
+		A505778D1E92C737001A48EA /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A505778C1E92C737001A48EA /* LandingViewController.swift */; };
 		A50577901E92C737001A48EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A505778E1E92C737001A48EA /* Main.storyboard */; };
 		A50577951E92C737001A48EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A50577941E92C737001A48EA /* Assets.xcassets */; };
 		A50577981E92C737001A48EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A50577961E92C737001A48EA /* LaunchScreen.storyboard */; };
@@ -46,7 +46,7 @@
 		0E7405A11E996C1E00974FD4 /* GeotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeotificationsViewController.swift; sourceTree = "<group>"; };
 		A50577871E92C737001A48EA /* InABlink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InABlink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A505778A1E92C737001A48EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A505778C1E92C737001A48EA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A505778C1E92C737001A48EA /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		A505778F1E92C737001A48EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A50577941E92C737001A48EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A50577971E92C737001A48EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -114,7 +114,7 @@
 				0E7405A11E996C1E00974FD4 /* GeotificationsViewController.swift */,
 				0E74059B1E99603300974FD4 /* Utilities.swift */,
 				A505778A1E92C737001A48EA /* AppDelegate.swift */,
-				A505778C1E92C737001A48EA /* ViewController.swift */,
+				A505778C1E92C737001A48EA /* LandingViewController.swift */,
 				A505778E1E92C737001A48EA /* Main.storyboard */,
 				CCB7C3F31E996A3500659A9A /* AddCallVC.swift */,
 				CCB7C3F11E995F1700659A9A /* CallViewController.swift */,
@@ -278,7 +278,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A505778D1E92C737001A48EA /* ViewController.swift in Sources */,
+				A505778D1E92C737001A48EA /* LandingViewController.swift in Sources */,
 				0E7405A41E996C1E00974FD4 /* GeotificationsViewController.swift in Sources */,
 				CCB7C3F41E996A3500659A9A /* AddCallVC.swift in Sources */,
 				A505778B1E92C737001A48EA /* AppDelegate.swift in Sources */,

@@ -24,40 +24,33 @@ import UIKit
 import MapKit
 
 protocol AddGeotificationsViewControllerDelegate {
-  func addGeotificationViewController(controller: AddGeotificationViewController, didAddCoordinate coordinate: CLLocationCoordinate2D,
-    radius: Double, identifier: String, note: String, eventType: EventType)
+    func addGeotificationViewController(controller: AddGeotificationViewController, didAddCoordinate: CLLocationCoordinate2D,
+                                        radius: Double, identifier: String, note: String, eventType: EventType)
 }
 
-class AddGeotificationViewController: UITableViewController, AddGeotificationsViewControllerDelegate {
-    func addGeotificationViewController(controller: AddGeotificationViewController, didAddCoordinate coordinate: CLLocationCoordinate2D, radius: Double, identifier: String, note: String, eventType: EventType) {
+class AddGeotificationViewController: UITableViewController {
+    
+    @IBOutlet var addButton: UIBarButtonItem!
+    @IBOutlet var zoomButton: UIBarButtonItem!
+    @IBOutlet weak var eventTypeSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var radiusTextField: UITextField!
+    @IBOutlet weak var noteTextField: UITextField!
+    @IBOutlet weak var mapView: MKMapView!
+    
+    var delegate: AddGeotificationsViewControllerDelegate?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationItem.rightBarButtonItems = [addButton, zoomButton]
+        addButton.isEnabled = false
     }
-
-
-  @IBOutlet var addButton: UIBarButtonItem!
-  @IBOutlet var zoomButton: UIBarButtonItem!
-  @IBOutlet weak var eventTypeSegmentedControl: UISegmentedControl!
-  @IBOutlet weak var radiusTextField: UITextField!
-  @IBOutlet weak var noteTextField: UITextField!
-  @IBOutlet weak var mapView: MKMapView!
-
-  var delegate: AddGeotificationsViewControllerDelegate?
-
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    navigationItem.rightBarButtonItems = [addButton, zoomButton]
-    addButton.isEnabled = false
-  }
-
-  @IBAction func textFieldEditingChanged(sender: UITextField) {
-    addButton.isEnabled = !radiusTextField.text!.isEmpty && !noteTextField.text!.isEmpty
-  }
-
-  @IBAction func onCancel(sender: AnyObject) {
-    dismiss(animated: true, completion: nil)
-  }
-
-    @IBAction private func onAdd(_ sender: AnyObject) {
-        print("on click")
+    
+    
+    @IBAction func textFieldEditingChanged(sender: UITextField) {
+        addButton.isEnabled = !radiusTextField.text!.isEmpty && !noteTextField.text!.isEmpty
+    }
+    @IBAction func onAdd(_ sender: UIBarButtonItem) {
+        print("--------add")
         let coordinate = mapView.centerCoordinate
         let radius = Double(radiusTextField.text!) ?? 0
         let identifier = NSUUID().uuidString
@@ -69,16 +62,20 @@ class AddGeotificationViewController: UITableViewController, AddGeotificationsVi
         }
         let geotification = Geotification(coordinate: coordinate, radius: radius, identifier: identifier, note: note!, eventType: eventType)
         savedItems.append(NSKeyedArchiver.archivedData(withRootObject: geotification))
-
-        UserDefaults.standard.set(savedItems, forKey: PreferencesKeys.savedItems)
-
-        self.dismiss(animated: true, completion: nil)
         
-        //addGeotificationViewController(controller: self, didAddCoordinate: coordinate, radius: radius, identifier: identifier, note: note!, eventType: eventType)
+        UserDefaults.standard.set(savedItems, forKey: PreferencesKeys.savedItems)
+        
+        self.dismiss(animated: true, completion: nil)
+
     }
     
-
-  @IBAction private func onZoomToCurrentLocation(sender: AnyObject) {
-    mapView.zoomToUserLocation()
-  }
+    @IBAction func onCancel(sender: AnyObject) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
+    @IBAction private func onZoomToCurrentLocation(sender: AnyObject) {
+        mapView.zoomToUserLocation()
+    }
 }
