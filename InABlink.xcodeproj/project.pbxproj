@@ -7,18 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E74059E1E99603300974FD4 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E74059B1E99603300974FD4 /* Utilities.swift */; };
+		0E7405A21E996C1E00974FD4 /* AddGeotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E74059F1E996C1E00974FD4 /* AddGeotificationViewController.swift */; };
+		0E7405A31E996C1E00974FD4 /* Geotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7405A01E996C1E00974FD4 /* Geotification.swift */; };
+		0E7405A41E996C1E00974FD4 /* GeotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7405A11E996C1E00974FD4 /* GeotificationsViewController.swift */; };
+		0E7EFD4F1E9BF8FE007103BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7EFD4D1E9BF8FE007103BC /* AppDelegate.swift */; };
+		0E7EFD501E9BF8FE007103BC /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7EFD4E1E9BF8FE007103BC /* LandingViewController.swift */; };
 		1BF875D91E995BCA009A32AF /* SurveyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF875D81E995BCA009A32AF /* SurveyListViewController.swift */; };
 		1BF875DB1E995C5D009A32AF /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF875DA1E995C5D009A32AF /* Survey.swift */; };
 		1BF875DD1E995D5E009A32AF /* SurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF875DC1E995D5E009A32AF /* SurveyViewController.swift */; };
 		1BF875DF1E996693009A32AF /* SurveyListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF875DE1E996693009A32AF /* SurveyListCell.swift */; };
 		1BF875E11E996FF9009A32AF /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF875E01E996FF9009A32AF /* QuestionTableViewCell.swift */; };
 		1BF875E31E997796009A32AF /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF875E21E997796009A32AF /* Question.swift */; };
-		0E74059E1E99603300974FD4 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E74059B1E99603300974FD4 /* Utilities.swift */; };
-		0E7405A21E996C1E00974FD4 /* AddGeotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E74059F1E996C1E00974FD4 /* AddGeotificationViewController.swift */; };
-		0E7405A31E996C1E00974FD4 /* Geotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7405A01E996C1E00974FD4 /* Geotification.swift */; };
-		0E7405A41E996C1E00974FD4 /* GeotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7405A11E996C1E00974FD4 /* GeotificationsViewController.swift */; };
-		A505778B1E92C737001A48EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A505778A1E92C737001A48EA /* AppDelegate.swift */; };
-		A505778D1E92C737001A48EA /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A505778C1E92C737001A48EA /* LandingViewController.swift */; };
 		A50577901E92C737001A48EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A505778E1E92C737001A48EA /* Main.storyboard */; };
 		A50577951E92C737001A48EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A50577941E92C737001A48EA /* Assets.xcassets */; };
 		A50577981E92C737001A48EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A50577961E92C737001A48EA /* LaunchScreen.storyboard */; };
@@ -46,19 +46,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E74059B1E99603300974FD4 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		0E74059F1E996C1E00974FD4 /* AddGeotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGeotificationViewController.swift; sourceTree = "<group>"; };
+		0E7405A01E996C1E00974FD4 /* Geotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geotification.swift; sourceTree = "<group>"; };
+		0E7405A11E996C1E00974FD4 /* GeotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeotificationsViewController.swift; sourceTree = "<group>"; };
+		0E7EFD4D1E9BF8FE007103BC /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0E7EFD4E1E9BF8FE007103BC /* LandingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		1BF875D81E995BCA009A32AF /* SurveyListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyListViewController.swift; sourceTree = "<group>"; };
 		1BF875DA1E995C5D009A32AF /* Survey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
 		1BF875DC1E995D5E009A32AF /* SurveyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyViewController.swift; sourceTree = "<group>"; };
 		1BF875DE1E996693009A32AF /* SurveyListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyListCell.swift; sourceTree = "<group>"; };
 		1BF875E01E996FF9009A32AF /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
 		1BF875E21E997796009A32AF /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
-		0E74059B1E99603300974FD4 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		0E74059F1E996C1E00974FD4 /* AddGeotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGeotificationViewController.swift; sourceTree = "<group>"; };
-		0E7405A01E996C1E00974FD4 /* Geotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geotification.swift; sourceTree = "<group>"; };
-		0E7405A11E996C1E00974FD4 /* GeotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeotificationsViewController.swift; sourceTree = "<group>"; };
 		A50577871E92C737001A48EA /* InABlink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InABlink.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A505778A1E92C737001A48EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A505778C1E92C737001A48EA /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		A505778F1E92C737001A48EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A50577941E92C737001A48EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A50577971E92C737001A48EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -121,20 +121,18 @@
 		A50577891E92C737001A48EA /* InABlink */ = {
 			isa = PBXGroup;
 			children = (
+				0E7EFD4D1E9BF8FE007103BC /* AppDelegate.swift */,
+				0E7EFD4E1E9BF8FE007103BC /* LandingViewController.swift */,
 				0E74059F1E996C1E00974FD4 /* AddGeotificationViewController.swift */,
 				0E7405A01E996C1E00974FD4 /* Geotification.swift */,
 				0E7405A11E996C1E00974FD4 /* GeotificationsViewController.swift */,
 				0E74059B1E99603300974FD4 /* Utilities.swift */,
-				A505778A1E92C737001A48EA /* AppDelegate.swift */,
-				A505778C1E92C737001A48EA /* LandingViewController.swift */,
 				A505778E1E92C737001A48EA /* Main.storyboard */,
 				CCB7C3F31E996A3500659A9A /* AddCallVC.swift */,
 				CCB7C3F11E995F1700659A9A /* CallViewController.swift */,
 				A50577941E92C737001A48EA /* Assets.xcassets */,
 				A50577961E92C737001A48EA /* LaunchScreen.storyboard */,
 				A50577991E92C737001A48EA /* Info.plist */,
-				A50577911E92C737001A48EA /* InABlink.xcdatamodeld */,
-				A50577BB1E92D1BA001A48EA /* MapViewController.swift */,
 				1BF875D81E995BCA009A32AF /* SurveyListViewController.swift */,
 				1BF875DE1E996693009A32AF /* SurveyListCell.swift */,
 				1BF875DC1E995D5E009A32AF /* SurveyViewController.swift */,
@@ -298,20 +296,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A505778D1E92C737001A48EA /* ViewController.swift in Sources */,
 				1BF875DF1E996693009A32AF /* SurveyListCell.swift in Sources */,
 				1BF875DD1E995D5E009A32AF /* SurveyViewController.swift in Sources */,
 				1BF875E31E997796009A32AF /* Question.swift in Sources */,
 				1BF875DB1E995C5D009A32AF /* Survey.swift in Sources */,
-				A50577931E92C737001A48EA /* InABlink.xcdatamodeld in Sources */,
-				A505778B1E92C737001A48EA /* AppDelegate.swift in Sources */,
-				A50577BC1E92D1BA001A48EA /* MapViewController.swift in Sources */,
 				1BF875E11E996FF9009A32AF /* QuestionTableViewCell.swift in Sources */,
 				1BF875D91E995BCA009A32AF /* SurveyListViewController.swift in Sources */,
-				A505778D1E92C737001A48EA /* LandingViewController.swift in Sources */,
 				0E7405A41E996C1E00974FD4 /* GeotificationsViewController.swift in Sources */,
 				CCB7C3F41E996A3500659A9A /* AddCallVC.swift in Sources */,
-				A505778B1E92C737001A48EA /* AppDelegate.swift in Sources */,
+				0E7EFD501E9BF8FE007103BC /* LandingViewController.swift in Sources */,
+				0E7EFD4F1E9BF8FE007103BC /* AppDelegate.swift in Sources */,
 				CCB7C3F21E995F1700659A9A /* CallViewController.swift in Sources */,
 				0E74059E1E99603300974FD4 /* Utilities.swift in Sources */,
 				0E7405A31E996C1E00974FD4 /* Geotification.swift in Sources */,
