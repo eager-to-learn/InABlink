@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We use a user&apos;s location to provide monitoring of dangerous zones for drug abusers. </string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We use a user&apos;s location to provide monitoring of dangerous zones for drug abusers. </string>
 	<key>CFBundleDevelopmentRegion</key>
@@ -43,6 +45,10 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>tel</string>
 	</array>
 </dict>
 </plist>
