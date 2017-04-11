@@ -16,19 +16,7 @@ class SurveyListViewController: UIViewController,UITableViewDelegate,UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let survey1 = Survey()
-        survey1.questions.append(Question(content: "I am experiencing bouts of depression today."))
-        survey1.questions.append(Question(content: "I am feeling the need to drink/use drugs."))
-        survey1.questions.append(Question(content: "I am feeling angry at the world in general."))
-        survey1.questions.append(Question(content: "I am doing things to stay sober today."))
-        survey1.questions.append(Question(content: "I have thought about drinking/using drugs today."))
-        survey1.questions.append(Question(content: "I'm feeling sorry for myself today."))
-        survey1.questions.append(Question(content: "I am thinking clear today."))
-        survey1.questions.append(Question(content: "I have a positive outlook on life today."))
-        survey1.name = "Survey 1"
-        
-        surveys.append(survey1)
+        surveys.append(UserDefaults.value(forKey: "survey1Questions") as! Survey)
     }
     
     
