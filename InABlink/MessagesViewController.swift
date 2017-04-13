@@ -1,27 +1,20 @@
 //
-//  CallViewController.swift
+//  MessagesViewController.swift
 //  InABlink
 //
-//  Created by Rachel on 4/8/17.
+//  Created by Rachel on 4/10/17.
 //  Copyright © 2017 Washington University in St. Louis. All rights reserved.
 //
 
 import UIKit
 
-struct CallerInfo {
-    var name: String
-    var number: String
-}
+class MessagesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-class CallViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     
-    //var callers: [CallerInfo] = []
-    //var callers2: [String:String] = [:]
     var names: [String] = []
     var numbers: [String] = []
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let results = UserDefaults.standard.value(forKey: "name") {
@@ -54,24 +47,6 @@ class CallViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        
-        if editingStyle == .delete {
-            if let results = UserDefaults.standard.value(forKey: "name") {
-                names = results as! [String]
-            }
-            if let results = UserDefaults.standard.value(forKey: "numbers") {
-                numbers = results as! [String]
-            }
-            names.remove(at: indexPath.row)
-            numbers.remove(at: indexPath.row)
-            UserDefaults.standard.setValue(names, forKey: "name")
-            UserDefaults.standard.setValue(numbers, forKey: "number")
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            
-        }
-    }
-    
     func callNumber(phoneNumber:String) {
         
         if let phoneCallURL = URL(string: "tel://\(phoneNumber)") {
@@ -83,27 +58,7 @@ class CallViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    @IBAction func addCallerPressed(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "addCaller", sender: self)
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
-        if let results = UserDefaults.standard.value(forKey: "name") {
-            names = results as! [String]
-        }
-        if let results = UserDefaults.standard.value(forKey: "number") {
-            numbers = results as! [String]
-        }
-        tableView.reloadData()
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
         if let results = UserDefaults.standard.value(forKey: "name") {
             names = results as! [String]
         }
@@ -119,7 +74,21 @@ class CallViewController: UIViewController, UITableViewDataSource, UITableViewDe
             UserDefaults.standard.setValue(numbers, forKey: "number")
         }
         
-        self.title = "No Judgement Call"
+        tableView.reloadData()
+        
+        if let results = UserDefaults.standard.value(forKey: "image") {
+            imageView.contentMode = .scaleAspectFit
+            imageView.image = UIImage(data:results as! Data)
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
     }
 
     override func didReceiveMemoryWarning() {
