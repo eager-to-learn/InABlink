@@ -30,8 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         center.removeAllPendingNotificationRequests()
         
-        setUpSurveyNotifications()
         setUpSurveys()
+        setUpSurveyNotifications()
         return true
     }
 
@@ -143,45 +143,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func setUpSurveyNotifications() {
-        let content = UNMutableNotificationContent()
-        content.title = "Take Survey"
-        content.subtitle = " "
-        content.body = " "
-        content.sound = UNNotificationSound.default()
+        let surveyNames = UserDefaults.standard.array(forKey: "surveyNames") as! [String]
         
-        // Deliver the notification
-        var date = DateComponents()
-        date.hour = 0
-        date.minute = 43
-        date.second = 45
-        let trigger = UNCalendarNotificationTrigger.init(dateMatching: date, repeats: true)
-        let request = UNNotificationRequest(identifier:"survey", content: content, trigger: trigger)
-        
-        UNUserNotificationCenter.current().delegate = self
-        UNUserNotificationCenter.current().add(request){(error) in
+        for surveyName in surveyNames {
+            let content = UNMutableNotificationContent()
+            content.title = "Take Survey"
+            content.subtitle = " "
+            content.body = " "
+            content.sound = UNNotificationSound.default()
             
-            if (error != nil){
-                print(error?.localizedDescription ?? "Notification Failed")
+            // Deliver the notification
+            var date = DateComponents()
+            date.hour = 19 //TODO - fill with user preferences for each survey
+            date.minute = 45
+            date.second = 15
+            let trigger = UNCalendarNotificationTrigger.init(dateMatching: date, repeats: true)
+            let request = UNNotificationRequest(identifier:surveyName, content: content, trigger: trigger)
+            
+            UNUserNotificationCenter.current().delegate = self
+            UNUserNotificationCenter.current().add(request){(error) in
+                
+                if (error != nil){
+                    print(error?.localizedDescription ?? "Notification Failed")
+                }
             }
         }
     }
     
     private func setUpSurveys() {
-        let survey1 = Survey(questionContents:
-            [
-                "I am experiencing bouts of depression today.",
-                "I am feeling the need to drink/use drugs.",
-                "I am feeling angry at the world in general.",
-                "I am doing things to stay sober today.",
-                "I have thought about drinking/using drugs today.",
-                "I'm feeling sorry for myself today.",
-                "I am thinking clear today.",
-                "I have a positive outlook on life today."
-            ]
-        )
-        survey1.name = "Survey 1"
+        let surveyNames = ["Survey 1"]
+        UserDefaults.standard.set(surveyNames, forKey: "surveyNames")
         
-        UserDefaults.standard.setValue(survey1.getQuestionContents(), forKey: "survey1Questions")
+        for surveyName in surveyNames {
+            let survey = Survey(questions:
+                [
+                    Question(content: "I am experiencing bouts of depression today."),
+                    Question(content: "I am feeling the need to drink/use drugs."),
+                    Question(content: "I am feeling angry at the world in general."),
+                    Question(content: "I am doing things to stay sober today."),
+                    Question(content: "I have thought about drinking/using drugs today."),
+                    Question(content: "I'm feeling sorry for myself today."),
+                    Question(content: "I am thinking clear today."),
+                    Question(content: "I have a positive outlook on life today.")
+                ], name: surveyName
+            )
+            
+            UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: survey), forKey: survey.name)
+        }
     }
 
 }
@@ -210,10 +218,12 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
         if response.notification.request.identifier == "geotification" {
             //TODO - Open Rachel's Screen Here - how to get content to pass to view controller: response.notification.request.content
         }
-        else if response.notification.request.identifier == "survey" {
+        else {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let controller = storyboard.instantiateViewController(withIdentifier: "SurveyViewController") as! SurveyViewController
-            controller.survey = Survey.init(questionContents: UserDefaults.standard.value(forKey: "survey1Questions") as! [String])
+            let data = UserDefaults.standard.data(forKey: response.notification.request.identifier)!
+            controller.survey = NSKeyedUnarchiver.unarchiveObject(with: data) as? Survey
+        
             self.window?.rootViewController?.present(controller, animated: false, completion: nil)
         }
     }
@@ -225,7 +235,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
         if notification.request.identifier == "geotification"{
             completionHandler( [.alert,.sound,.badge])
         }
-        else if notification.request.identifier == "survey"{
+        else {
             completionHandler( [.alert,.sound,.badge])
         }
     }

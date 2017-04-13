@@ -12,11 +12,17 @@ import UIKit
 
 class SurveyListViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
-    var surveys = [Survey]()
+    var surveys: [Survey] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        surveys.append(UserDefaults.value(forKey: "survey1Questions") as! Survey)
+        let surveyNames = UserDefaults.standard.stringArray(forKey: "surveyNames")!
+        
+        for surveyName in surveyNames {
+            let data = UserDefaults.standard.data(forKey: surveyName)!
+            surveys.append(NSKeyedUnarchiver.unarchiveObject(with: data) as! Survey)
+        }
+        
     }
     
     
