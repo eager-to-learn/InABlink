@@ -12,6 +12,7 @@ class MessagesViewController: UIViewController, UITableViewDataSource, UITableVi
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var messageBody: UITextView!
     
     var names: [String] = []
     var numbers: [String] = []
@@ -80,6 +81,10 @@ class MessagesViewController: UIViewController, UITableViewDataSource, UITableVi
             imageView.contentMode = .scaleAspectFit
             imageView.image = UIImage(data:results as! Data)
         }
+        
+        if let results = UserDefaults.standard.value(forKeyPath: "message") {
+            messageBody.text = String(describing: results)
+        }
     }
     
     override func viewDidLoad() {
@@ -88,6 +93,8 @@ class MessagesViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        messageBody.isEditable = false
         
     }
 

@@ -370,6 +370,7 @@
                     <tabBarItem key="tabBarItem" title="Message" id="dS0-ba-eip"/>
                     <connections>
                         <outlet property="imageView" destination="hXK-g3-rxO" id="dbB-Ph-Xpb"/>
+                        <outlet property="messageBody" destination="EII-bd-ChH" id="eCF-Er-LeE"/>
                         <outlet property="tableView" destination="VwX-6C-eOS" id="udT-aW-mF2"/>
                     </connections>
                 </viewController>
@@ -685,6 +686,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cUa-zw-nR6">
+                                <rect key="frame" x="29" y="227" width="132" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Photo From Library"/>
+                                <connections>
+                                    <action selector="addPhoto:" destination="sO4-iq-Nxn" eventType="touchUpInside" id="r6g-M1-3fh"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter your encouraging message:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MF7-Cf-lv1">
                                 <rect key="frame" x="29" y="32" width="316" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -692,12 +701,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cUa-zw-nR6">
-                                <rect key="frame" x="29" y="227" width="179" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UcH-WP-P8E">
+                                <rect key="frame" x="268" y="227" width="77" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Select Photo From Library"/>
+                                <state key="normal" title="Take Photo"/>
                                 <connections>
-                                    <action selector="addPhoto:" destination="sO4-iq-Nxn" eventType="touchUpInside" id="r6g-M1-3fh"/>
+                                    <action selector="takePhoto:" destination="sO4-iq-Nxn" eventType="touchUpInside" id="LW5-G0-cjw"/>
                                 </connections>
                             </button>
                         </subviews>

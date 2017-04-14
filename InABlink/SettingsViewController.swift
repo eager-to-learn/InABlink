@@ -20,11 +20,37 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         picker.sourceType = .photoLibrary
         self.present(picker, animated: true, completion: nil)
     }
+    @IBAction func takePhoto(_ sender: UIButton) {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            picker.allowsEditing = false
+            picker.sourceType = .camera
+            picker.cameraCaptureMode = .photo
+            picker.modalPresentationStyle = .fullScreen
+            present(picker,animated: true,completion: nil)
+        }
+        else {
+            let alertVC = UIAlertController(
+                title: "No Camera",
+                message: "Sorry, this device has no camera",
+                preferredStyle: .alert)
+            let okAction = UIAlertAction(
+                title: "OK",
+                style:.default,
+                handler: nil)
+            alertVC.addAction(okAction)
+            present(
+                alertVC,
+                animated: true,
+                completion: nil)
+        }
+        
+    }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         imageView.contentMode = .scaleAspectFit
         imageView.image = chosenImage
+        
         let imageData = UIImagePNGRepresentation(chosenImage)
         UserDefaults.standard.set(imageData, forKey: "image")
         dismiss(animated: true, completion: nil)
