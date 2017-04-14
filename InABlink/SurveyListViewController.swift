@@ -12,23 +12,17 @@ import UIKit
 
 class SurveyListViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
-    var surveys = [Survey]()
+    var surveys: [Survey] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let surveyNames = UserDefaults.standard.stringArray(forKey: "surveyNames")!
         
-        let survey1 = Survey()
-        survey1.questions.append(Question(content: "I am experiencing bouts of depression today."))
-        survey1.questions.append(Question(content: "I am feeling the need to drink/use drugs."))
-        survey1.questions.append(Question(content: "I am feeling angry at the world in general."))
-        survey1.questions.append(Question(content: "I am doing things to stay sober today."))
-        survey1.questions.append(Question(content: "I have thought about drinking/using drugs today."))
-        survey1.questions.append(Question(content: "I'm feeling sorry for myself today."))
-        survey1.questions.append(Question(content: "I am thinking clear today."))
-        survey1.questions.append(Question(content: "I have a positive outlook on life today."))
-        survey1.name = "Survey 1"
+        for surveyName in surveyNames {
+            let data = UserDefaults.standard.data(forKey: surveyName)!
+            surveys.append(NSKeyedUnarchiver.unarchiveObject(with: data) as! Survey)
+        }
         
-        surveys.append(survey1)
     }
     
     

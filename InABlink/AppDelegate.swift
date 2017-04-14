@@ -4,10 +4,12 @@
 //
 //  Created by Corey Salzer on 4/3/17.
 //  Copyright © 2017 Washington University in St. Louis. All rights reserved.
+//  Notification Code from https://github.com/anishparajuli555/ios10LocalNotification
 //
 
 import UIKit
 import UserNotifications
+import UserNotificationsUI
 import CoreData
 import CoreLocation
 
@@ -27,6 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // Enable or disable features based on authorization
         }
         center.removeAllPendingNotificationRequests()
+        
+        setUpSurveys()
+        setUpSurveyNotifications()
         return true
     }
 
@@ -105,26 +110,86 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let index = geotifications?.index { $0?.identifier == identifier }
         return index != nil ? geotifications?[index!]?.note : nil
     }
-    func testFunc() {
-        print("notified")
-    }
     
     func handleEvent(forRegion region: CLRegion!) {
-        // Show an alert if application is active
-        /*if UIApplication.shared.applicationState == .active {
-            guard let message = note(fromRegionIdentifier: region.identifier) else { return }
-            window?.rootViewController?.showAlert(withTitle: nil, message: message)
-        } else {*/
-            // Otherwise present a local notification
+        let content = UNMutableNotificationContent()
+        content.title = "STOP: Entering a Danger Zone"
+        content.subtitle = "You can do it!"
+        content.body = "Make a No Judgement Call"
+        content.sound = UNNotificationSound.default()
         
-            let center = NotificationCenter.default
-            center.addObserver(self, selector: #selector(testFunc), name: NSNotification.Name(rawValue: "Geofence Alert"), object: nil)
-            center.post(name: NSNotification.Name(rawValue: "Geofence Alert"), object: nil)
-            /*let notification = UILocalNotification()
-            notification.alertBody = note(fromRegionIdentifier: region.identifier)
-            notification.soundName = "Default"
-            UIApplication.shared.presentLocalNotificationNow(notification)*/
-        //}
+        //To present image in notification
+        if let path = Bundle.main.path(forResource: "little boy", ofType: "jpg") {
+            let url = URL(fileURLWithPath: path)
+            do {
+                let attachment = try UNNotificationAttachment(identifier: "sampleImage", url: url, options: nil)
+                content.attachments = [attachment]
+            } catch {
+                print("attachment not found.")
+            }
+        }
+        
+        // Deliver the notification
+        let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 1.0, repeats: false)
+        let request = UNNotificationRequest(identifier:"geotification", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().add(request){(error) in
+            
+            if (error != nil){
+                print(error?.localizedDescription ?? "Notification Failed")
+            }
+        }
+    }
+    
+    private func setUpSurveyNotifications() {
+        let surveyNames = UserDefaults.standard.array(forKey: "surveyNames") as! [String]
+        
+        for surveyName in surveyNames {
+            let content = UNMutableNotificationContent()
+            content.title = "Take Survey"
+            content.subtitle = " "
+            content.body = " "
+            content.sound = UNNotificationSound.default()
+            
+            // Deliver the notification
+            var date = DateComponents()
+            date.hour = 19 //TODO - fill with user preferences for each survey
+            date.minute = 45
+            date.second = 15
+            let trigger = UNCalendarNotificationTrigger.init(dateMatching: date, repeats: true)
+            let request = UNNotificationRequest(identifier:surveyName, content: content, trigger: trigger)
+            
+            UNUserNotificationCenter.current().delegate = self
+            UNUserNotificationCenter.current().add(request){(error) in
+                
+                if (error != nil){
+                    print(error?.localizedDescription ?? "Notification Failed")
+                }
+            }
+        }
+    }
+    
+    private func setUpSurveys() {
+        let surveyNames = ["Survey 1"]
+        UserDefaults.standard.set(surveyNames, forKey: "surveyNames")
+        
+        for surveyName in surveyNames {
+            let survey = Survey(questions:
+                [
+                    Question(content: "I am experiencing bouts of depression today."),
+                    Question(content: "I am feeling the need to drink/use drugs."),
+                    Question(content: "I am feeling angry at the world in general."),
+                    Question(content: "I am doing things to stay sober today."),
+                    Question(content: "I have thought about drinking/using drugs today."),
+                    Question(content: "I'm feeling sorry for myself today."),
+                    Question(content: "I am thinking clear today."),
+                    Question(content: "I have a positive outlook on life today.")
+                ], name: surveyName
+            )
+            
+            UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: survey), forKey: survey.name)
+        }
     }
 
 }
@@ -133,16 +198,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        print(locationManager.requestState(for: region))
         if region is CLCircularRegion {
             handleEvent(forRegion: region)
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-        print(locationManager.requestState(for: region))
         if region is CLCircularRegion {
             handleEvent(forRegion: region)
+        }
+    }
+    
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate{
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+
+        if response.notification.request.identifier == "geotification" {
+            //TODO - Open Rachel's Screen Here - how to get content to pass to view controller: response.notification.request.content
+        }
+        else {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "SurveyViewController") as! SurveyViewController
+            let data = UserDefaults.standard.data(forKey: response.notification.request.identifier)!
+            controller.survey = NSKeyedUnarchiver.unarchiveObject(with: data) as? Survey
+        
+            self.window?.rootViewController?.present(controller, animated: false, completion: nil)
+        }
+    }
+    
+    //This is key callback to present notification while the app is in foreground
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        //You can either present alert ,sound or increase badge while the app is in foreground too with ios 10
+        //to distinguish between notifications
+        if notification.request.identifier == "geotification"{
+            completionHandler( [.alert,.sound,.badge])
+        }
+        else {
+            completionHandler( [.alert,.sound,.badge])
         }
     }
     

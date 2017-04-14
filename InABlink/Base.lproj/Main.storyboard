@@ -478,7 +478,7 @@
         <!--Survey View Controller-->
         <scene sceneID="H1f-dh-Fnn">
             <objects>
-                <viewController id="XbJ-G4-5xs" customClass="SurveyViewController" customModule="InABlink" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SurveyViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XbJ-G4-5xs" customClass="SurveyViewController" customModule="InABlink" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6b9-jg-yQ8"/>
                         <viewControllerLayoutGuide type="bottom" id="YqA-D3-Sqe"/>
