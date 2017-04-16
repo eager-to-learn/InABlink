@@ -22,9 +22,8 @@ class SurveyViewController: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.rowHeight = UITableViewAutomaticDimension
         //surveyTitle.text = "Rate each of the statements from 0 to 10."
-        //tableView.estimatedRowHeight = 200
+        tableView.estimatedRowHeight = 150
         tableView.allowsSelection = false
     }
     

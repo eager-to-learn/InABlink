@@ -26,8 +26,11 @@ class MessagesViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         
         let cell =  UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
+        cell.backgroundColor = UIColor.init(red: 40/255, green: 171/255, blue: 202/255, alpha: 1/1)
         cell.textLabel!.text = names[indexPath.row]
+        cell.textLabel?.textColor = UIColor.white
         cell.detailTextLabel?.text = numbers[indexPath.row]
+        cell.detailTextLabel?.textColor = UIColor.white
         
         return cell
     }
@@ -94,7 +97,14 @@ class MessagesViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
+        tableView.backgroundColor = UIColor.init(red: 40/255, green: 171/255, blue: 202/255, alpha: 1/1)
+        tableView.layer.borderWidth = CGFloat(2)
+        tableView.layer.borderColor = UIColor.white.cgColor
+        
         messageBody.isEditable = false
+        messageBody.layer.borderWidth = CGFloat(2)
+        messageBody.layer.borderColor = UIColor.white.cgColor
+        
         
     }
 

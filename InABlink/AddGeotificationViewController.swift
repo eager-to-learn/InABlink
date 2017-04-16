@@ -43,6 +43,7 @@ class AddGeotificationViewController: UITableViewController {
         super.viewDidLoad()
         navigationItem.rightBarButtonItems = [addButton, zoomButton]
         addButton.isEnabled = false
+        
     }
     
     

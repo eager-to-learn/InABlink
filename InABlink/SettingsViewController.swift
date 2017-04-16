@@ -79,6 +79,9 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         
         view.addGestureRecognizer(tap)
+        
+        messageBody.layer.borderWidth = CGFloat(1)
+        messageBody.layer.borderColor = UIColor.white.cgColor
     }
     func dismissKeyboard() {
         view.endEditing(true)

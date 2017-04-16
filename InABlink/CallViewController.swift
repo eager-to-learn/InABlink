@@ -33,7 +33,10 @@ class CallViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let cell =  UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
         cell.textLabel!.text = names[indexPath.row]
+        cell.textLabel?.textColor = UIColor.white
         cell.detailTextLabel?.text = numbers[indexPath.row]
+        cell.detailTextLabel?.textColor = UIColor.white
+        cell.backgroundColor = UIColor.init(red: 40/255, green: 171/255, blue: 202/255, alpha: 1/1)
         
         return cell
     }
@@ -120,6 +123,7 @@ class CallViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         self.title = "No Judgement Call"
+        
     }
 
     override func didReceiveMemoryWarning() {

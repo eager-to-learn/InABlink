@@ -51,6 +51,8 @@ class AddCallVC: UIViewController {
         successMessage.isHidden = true
 
         addButton.layer.cornerRadius = 5
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.white
     }
 
     override func didReceiveMemoryWarning() {
