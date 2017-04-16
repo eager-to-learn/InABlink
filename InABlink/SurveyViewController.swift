@@ -23,8 +23,8 @@ class SurveyViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = UITableViewAutomaticDimension
-        surveyTitle.text = "Rate each of the statements from 0 to 10."
-        tableView.estimatedRowHeight = 110
+        //surveyTitle.text = "Rate each of the statements from 0 to 10."
+        //tableView.estimatedRowHeight = 200
         tableView.allowsSelection = false
     }
     
@@ -42,6 +42,7 @@ class SurveyViewController: UIViewController, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionTableViewCell") as! QuestionTableViewCell
         
         cell.question.text = survey.questions[indexPath.row].content
+        cell.question.sizeToFit()
         return cell
     }
     
