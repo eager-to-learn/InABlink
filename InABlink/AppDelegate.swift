@@ -114,10 +114,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return index != nil ? geotifications?[index!]?.note : nil
     }
     
-    func handleEvent(forRegion region: CLRegion!) {
+    func handleEvent(forRegion region: CLRegion!, eventType: EventType) {
         let content = UNMutableNotificationContent()
-        content.title = "STOP: Entering a Danger Zone"
-        content.subtitle = "You can do it!"
+        
+        if eventType == .dangerous {
+            content.title = "STOP: Entering a Danger Zone"
+        }
+        else if eventType == .safe {
+            content.title = "Great Work! You Are Entering a Safe Zone 😀"
+        }
+
+        content.subtitle = "You can do it!" //read from NSUserDefaults
         content.body = "Make a No Judgement Call"
         content.sound = UNNotificationSound.default()
         
@@ -134,8 +141,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Deliver the notification
         let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 1.0, repeats: false)
-        let request = UNNotificationRequest(identifier:"geotification", content: content, trigger: trigger)
-        
+        let request = UNNotificationRequest(identifier:eventType.rawValue, content: content, trigger: trigger)
+
         UNUserNotificationCenter.current().delegate = self
         UNUserNotificationCenter.current().add(request){(error) in
             
@@ -202,13 +209,13 @@ extension AppDelegate: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         if region is CLCircularRegion {
-            handleEvent(forRegion: region)
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-        if region is CLCircularRegion {
-            handleEvent(forRegion: region)
+            guard let savedItems = UserDefaults.standard.array(forKey: PreferencesKeys.savedItems) else { return }
+            for savedItem in savedItems {
+                guard let geotification = NSKeyedUnarchiver.unarchiveObject(with: savedItem as! Data) as? Geotification else { continue }
+                if region.identifier == geotification.identifier {
+                    handleEvent(forRegion: region, eventType: geotification.eventType)
+                }
+            }
         }
     }
     
@@ -218,8 +225,15 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
 
-        if response.notification.request.identifier == "geotification" {
+        if String(response.notification.request.identifier) == EventType.dangerous.rawValue || String(response.notification.request.identifier) == EventType.safe.rawValue {
             //TODO - Open Rachel's Screen Here - how to get content to pass to view controller: response.notification.request.content
+            
+            //let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            //let controller = storyboard.instantiateViewController(withIdentifier: "MessagesViewController") as! MessagesViewController
+            self.window?.rootViewController?.tabBarController?.selectedIndex = 3
+            //self.window?.rootViewController?.tabBarController?.selectedViewController.eventType = response.notification.request.identifier
+            //self.window?.rootViewController?.present(controller, animated: false, completion: nil)
+            
         }
         else {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -234,13 +248,8 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
     //This is key callback to present notification while the app is in foreground
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         //You can either present alert ,sound or increase badge while the app is in foreground too with ios 10
-        //to distinguish between notifications
-        if notification.request.identifier == "geotification"{
-            completionHandler( [.alert,.sound,.badge])
-        }
-        else {
-            completionHandler( [.alert,.sound,.badge])
-        }
+
+        completionHandler( [.alert,.sound,.badge])
     }
     
 }

@@ -35,8 +35,8 @@ struct GeoKey {
 }
 
 enum EventType: String {
-  case onEntry = "On Entry"
-  case onExit = "On Exit"
+  case dangerous = "Dangerous"
+  case safe = "Safe"
 }
 
 class Geotification: NSObject, NSCoding, MKAnnotation {
