@@ -10,10 +10,12 @@ import UIKit
 import MapKit
 
 class LandingViewController: UIViewController {
+    @IBOutlet weak var enterButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        enterButton.layer.cornerRadius = 5
     }
 
     override func didReceiveMemoryWarning() {
