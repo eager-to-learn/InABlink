@@ -33,6 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         center.removeAllPendingNotificationRequests()
         
+        checkForFirstTimeUsage()
+        
         setUpSurveys()
         setUpSurveyNotifications()
         return true
@@ -117,14 +119,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func handleEvent(forRegion region: CLRegion!, eventType: EventType) {
         let content = UNMutableNotificationContent()
         
-        if eventType == .dangerous {
-            content.title = "STOP: Entering a Danger Zone"
-        }
-        else if eventType == .safe {
-            content.title = "Great Work! You Are Entering a Safe Zone 😀"
-        }
-
-        content.subtitle = "You can do it!" //read from NSUserDefaults
+        content.title = eventType.message
+        content.subtitle = "You can do it!" //TODO - read from UserDefaults
         content.body = "Make a No Judgement Call"
         content.sound = UNNotificationSound.default()
         
@@ -164,8 +160,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             // Deliver the notification
             var date = DateComponents()
-            date.hour = 19 //TODO - fill with user preferences for each survey
-            date.minute = 45
+            date.hour = 22 //TODO - fill with user preferences for each survey
+            date.minute = 2
             date.second = 15
             let trigger = UNCalendarNotificationTrigger.init(dateMatching: date, repeats: true)
             let request = UNNotificationRequest(identifier:surveyName, content: content, trigger: trigger)
@@ -201,6 +197,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: survey), forKey: survey.name)
         }
     }
+    
+    private func checkForFirstTimeUsage() {
+        if UserDefaults.standard.object(forKey: "isNotFirstTime") as? Bool == nil {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "LandingViewController") as! LandingViewController
+
+            self.window?.rootViewController? = controller
+        }
+    }
 
 }
 
@@ -226,22 +231,15 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
 
         if String(response.notification.request.identifier) == EventType.dangerous.rawValue || String(response.notification.request.identifier) == EventType.safe.rawValue {
-            //TODO - Open Rachel's Screen Here - how to get content to pass to view controller: response.notification.request.content
-            
-            //let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            //let controller = storyboard.instantiateViewController(withIdentifier: "MessagesViewController") as! MessagesViewController
-            self.window?.rootViewController?.tabBarController?.selectedIndex = 3
-            //self.window?.rootViewController?.tabBarController?.selectedViewController.eventType = response.notification.request.identifier
-            //self.window?.rootViewController?.present(controller, animated: false, completion: nil)
-            
+            (self.window?.rootViewController as! UITabBarController).selectedIndex = 3
+            ((self.window?.rootViewController as! UITabBarController).selectedViewController as! MessagesViewController).messageTitle.text = EventType(rawValue: String(response.notification.request.identifier))?.message
         }
         else {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: "SurveyViewController") as! SurveyViewController
             let data = UserDefaults.standard.data(forKey: response.notification.request.identifier)!
-            controller.survey = NSKeyedUnarchiver.unarchiveObject(with: data) as? Survey
-        
-            self.window?.rootViewController?.present(controller, animated: false, completion: nil)
+            let survey = NSKeyedUnarchiver.unarchiveObject(with: data) as? Survey
+            (self.window?.rootViewController as! UITabBarController).selectedIndex = 2
+            let surveyNavigationController = (self.window?.rootViewController as! UITabBarController).selectedViewController as! UINavigationController
+            surveyNavigationController.viewControllers[0].performSegue(withIdentifier: "goToSurveyView", sender: survey)
         }
     }
     

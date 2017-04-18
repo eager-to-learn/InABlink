@@ -22,7 +22,14 @@ class LandingViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        UserDefaults.standard.set(true, forKey: "isNotFirstTime")
+        let controller = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
+        let appDel:AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDel.window?.rootViewController = controller
+    }
+    
     
 
 }

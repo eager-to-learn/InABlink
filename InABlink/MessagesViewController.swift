@@ -13,6 +13,7 @@ class MessagesViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageBody: UITextView!
+    @IBOutlet weak var messageTitle: UILabel!
     
     var names: [String] = []
     var numbers: [String] = []
@@ -88,6 +89,8 @@ class MessagesViewController: UIViewController, UITableViewDataSource, UITableVi
         if let results = UserDefaults.standard.value(forKeyPath: "message") {
             messageBody.text = String(describing: results)
         }
+        
+        messageTitle.sizeToFit()
     }
     
     override func viewDidLoad() {
@@ -104,8 +107,6 @@ class MessagesViewController: UIViewController, UITableViewDataSource, UITableVi
         messageBody.isEditable = false
         messageBody.layer.borderWidth = CGFloat(2)
         messageBody.layer.borderColor = UIColor.white.cgColor
-        
-        
     }
 
     override func didReceiveMemoryWarning() {

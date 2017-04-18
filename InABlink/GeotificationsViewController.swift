@@ -109,7 +109,7 @@ class GeotificationsViewController: UIViewController {
     }
     
     func updateGeotificationsCount() {
-        title = "Geotifications (\(geotifications.count))"
+        title = "Geofencing Zones (\(geotifications.count))"
     }
     
     // MARK: Map overlay functions
