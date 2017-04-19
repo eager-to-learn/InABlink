@@ -33,21 +33,31 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcD-8k-DhT">
-                                <rect key="frame" x="140" y="300" width="94" height="66"/>
+                                <rect key="frame" x="116" y="500" width="143" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.45882352941176469" blue="0.60392156862745094" alpha="0.86584974315068497" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
-                                <state key="normal" title="Enter">
+                                <state key="normal" title="Continue">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="KYg-WZ-hni" kind="show" identifier="LandingViewSegue" id="WAB-3p-iKT"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nH2-oC-Fpd">
+                                <rect key="frame" x="16" y="119" width="343" height="113.5"/>
+                                <string key="text">InABlink is an app that informs individuals, in-the-moment and within their own communities, of risks and protective triggers associated with harmful alcohol and drug use.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.15686274509803921" green="0.6705882352941176" blue="0.792156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Bbp-hr-MOT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="2CP-NR-pKl"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nH2-oC-Fpd" secondAttribute="trailing" id="6vc-ZT-ypv"/>
+                            <constraint firstItem="nH2-oC-Fpd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Je0-XI-uia"/>
+                            <constraint firstItem="nH2-oC-Fpd" firstAttribute="top" secondItem="Bbp-hr-MOT" secondAttribute="bottom" constant="55" id="L84-sK-Rr7"/>
                             <constraint firstItem="Bbp-hr-MOT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qOP-UU-Bjg"/>
                         </constraints>
                     </view>
@@ -57,7 +67,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-49" y="134"/>
+            <point key="canvasLocation" x="-50.399999999999999" y="133.5832083958021"/>
         </scene>
         <!--Geofencing Zones (0)-->
         <scene sceneID="PPm-zJ-EEh">
