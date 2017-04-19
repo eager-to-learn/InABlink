@@ -51,12 +51,11 @@ class AddGeotificationViewController: UITableViewController {
         addButton.isEnabled = !radiusTextField.text!.isEmpty && !noteTextField.text!.isEmpty
     }
     @IBAction func onAdd(_ sender: UIBarButtonItem) {
-        print("--------add")
         let coordinate = mapView.centerCoordinate
         let radius = Double(radiusTextField.text!) ?? 0
         let identifier = NSUUID().uuidString
         let note = noteTextField.text
-        let eventType: EventType = (eventTypeSegmentedControl.selectedSegmentIndex == 0) ? .onEntry : .onExit
+        let eventType: EventType = (eventTypeSegmentedControl.selectedSegmentIndex == 0) ? .dangerous : .safe
         var savedItems: [Data] = []
         if let pulledData = UserDefaults.standard.array(forKey: PreferencesKeys.savedItems){
             savedItems = pulledData as! [Data]

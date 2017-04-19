@@ -33,6 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         center.removeAllPendingNotificationRequests()
         
+        checkForFirstTimeUsage()
+        
         setUpSurveys()
         setUpSurveyNotifications()
         return true
@@ -114,10 +116,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return index != nil ? geotifications?[index!]?.note : nil
     }
     
-    func handleEvent(forRegion region: CLRegion!) {
+    func handleEvent(forRegion region: CLRegion!, eventType: EventType) {
         let content = UNMutableNotificationContent()
-        content.title = "STOP: Entering a Danger Zone"
-        content.subtitle = "You can do it!"
+        
+        content.title = eventType.message
+        content.subtitle = "You can do it!" //TODO - read from UserDefaults
         content.body = "Make a No Judgement Call"
         content.sound = UNNotificationSound.default()
         
@@ -134,8 +137,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Deliver the notification
         let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 1.0, repeats: false)
-        let request = UNNotificationRequest(identifier:"geotification", content: content, trigger: trigger)
-        
+        let request = UNNotificationRequest(identifier:eventType.rawValue, content: content, trigger: trigger)
+
         UNUserNotificationCenter.current().delegate = self
         UNUserNotificationCenter.current().add(request){(error) in
             
@@ -157,8 +160,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             // Deliver the notification
             var date = DateComponents()
-            date.hour = 19 //TODO - fill with user preferences for each survey
-            date.minute = 45
+            date.hour = 22 //TODO - fill with user preferences for each survey
+            date.minute = 2
             date.second = 15
             let trigger = UNCalendarNotificationTrigger.init(dateMatching: date, repeats: true)
             let request = UNNotificationRequest(identifier:surveyName, content: content, trigger: trigger)
@@ -194,6 +197,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: survey), forKey: survey.name)
         }
     }
+    
+    private func checkForFirstTimeUsage() {
+        if UserDefaults.standard.object(forKey: "isNotFirstTime") as? Bool == nil {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "LandingViewController") as! LandingViewController
+
+            self.window?.rootViewController? = controller
+        }
+    }
 
 }
 
@@ -202,13 +214,13 @@ extension AppDelegate: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         if region is CLCircularRegion {
-            handleEvent(forRegion: region)
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-        if region is CLCircularRegion {
-            handleEvent(forRegion: region)
+            guard let savedItems = UserDefaults.standard.array(forKey: PreferencesKeys.savedItems) else { return }
+            for savedItem in savedItems {
+                guard let geotification = NSKeyedUnarchiver.unarchiveObject(with: savedItem as! Data) as? Geotification else { continue }
+                if region.identifier == geotification.identifier {
+                    handleEvent(forRegion: region, eventType: geotification.eventType)
+                }
+            }
         }
     }
     
@@ -218,29 +230,24 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
 
-        if response.notification.request.identifier == "geotification" {
-            //TODO - Open Rachel's Screen Here - how to get content to pass to view controller: response.notification.request.content
+        if String(response.notification.request.identifier) == EventType.dangerous.rawValue || String(response.notification.request.identifier) == EventType.safe.rawValue {
+            (self.window?.rootViewController as! UITabBarController).selectedIndex = 3
+            ((self.window?.rootViewController as! UITabBarController).selectedViewController as! MessagesViewController).messageTitle.text = EventType(rawValue: String(response.notification.request.identifier))?.message
         }
         else {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: "SurveyViewController") as! SurveyViewController
             let data = UserDefaults.standard.data(forKey: response.notification.request.identifier)!
-            controller.survey = NSKeyedUnarchiver.unarchiveObject(with: data) as? Survey
-        
-            self.window?.rootViewController?.present(controller, animated: false, completion: nil)
+            let survey = NSKeyedUnarchiver.unarchiveObject(with: data) as? Survey
+            (self.window?.rootViewController as! UITabBarController).selectedIndex = 2
+            let surveyNavigationController = (self.window?.rootViewController as! UITabBarController).selectedViewController as! UINavigationController
+            surveyNavigationController.viewControllers[0].performSegue(withIdentifier: "goToSurveyView", sender: survey)
         }
     }
     
     //This is key callback to present notification while the app is in foreground
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         //You can either present alert ,sound or increase badge while the app is in foreground too with ios 10
-        //to distinguish between notifications
-        if notification.request.identifier == "geotification"{
-            completionHandler( [.alert,.sound,.badge])
-        }
-        else {
-            completionHandler( [.alert,.sound,.badge])
-        }
+
+        completionHandler( [.alert,.sound,.badge])
     }
     
 }

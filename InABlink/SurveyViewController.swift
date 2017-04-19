@@ -22,7 +22,7 @@ class SurveyViewController: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //surveyTitle.text = "Rate each of the statements from 0 to 10."
+        self.title = survey.name
         tableView.estimatedRowHeight = 150
         tableView.allowsSelection = false
     }

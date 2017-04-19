@@ -35,8 +35,17 @@ struct GeoKey {
 }
 
 enum EventType: String {
-  case onEntry = "On Entry"
-  case onExit = "On Exit"
+  case dangerous = "Dangerous"
+  case safe = "Safe"
+    
+    var message : String {
+        switch self {
+        case .dangerous:
+            return "STOP: Entering a Danger Zone"
+        case .safe:
+            return "Great Work! You Are Entering a Safe Zone 😀"
+        }
+    }
 }
 
 class Geotification: NSObject, NSCoding, MKAnnotation {

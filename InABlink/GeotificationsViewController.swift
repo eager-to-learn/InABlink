@@ -109,7 +109,7 @@ class GeotificationsViewController: UIViewController {
     }
     
     func updateGeotificationsCount() {
-        title = "Geotifications (\(geotifications.count))"
+        title = "Geofencing Zones (\(geotifications.count))"
     }
     
     // MARK: Map overlay functions
@@ -138,8 +138,8 @@ class GeotificationsViewController: UIViewController {
     
     func region(withGeotification geotification: Geotification) -> CLCircularRegion {
         let region = CLCircularRegion(center: geotification.coordinate, radius: geotification.radius, identifier: geotification.identifier)
-        region.notifyOnEntry = (geotification.eventType == .onEntry)
-        region.notifyOnExit = !region.notifyOnEntry
+        region.notifyOnEntry = true
+        region.notifyOnExit = false
         return region
     }
     
