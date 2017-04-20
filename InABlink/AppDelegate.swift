@@ -160,9 +160,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             // Deliver the notification
             var date = DateComponents()
-            date.hour = 22 //TODO - fill with user preferences for each survey
-            date.minute = 2
-            date.second = 15
+            
+            if let time = UserDefaults.standard.value(forKey: "surveyTime") {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "HH:mm"
+                let calendar = Calendar.current
+                date.hour = calendar.component(.hour, from: time as! Date)
+                date.minute = calendar.component(.minute, from: time as! Date)
+                date.second = 00
+            }
+            else {  // if user defaults not set yet, pick arbitrary survey time
+                date.hour = 9
+                date.minute = 0
+                date.second = 00
+            }
             let trigger = UNCalendarNotificationTrigger.init(dateMatching: date, repeats: true)
             let request = UNNotificationRequest(identifier:surveyName, content: content, trigger: trigger)
             

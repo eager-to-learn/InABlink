@@ -27,7 +27,6 @@ class SurveyViewController: UIViewController, UITableViewDataSource {
         tableView.allowsSelection = false
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
-    
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

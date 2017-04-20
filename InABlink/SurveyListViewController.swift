@@ -26,9 +26,21 @@ class SurveyListViewController: UIViewController,UITableViewDelegate,UITableView
     }
     
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
+    override func viewDidAppear(_ animated: Bool) {
+        if let isFirstTime = UserDefaults.standard.value(forKey: "surveyFirstTime") as? Bool {
+            if (isFirstTime == false) {
+                print("not first time")
+            }
+        }
+        else {
+            print("first time")
+            let alert = UIAlertController(title: "Welcome to the Survey Page!", message: "Use this tab to fill out surveys and send feedback to your counselor. You will receive notifications that will prompt you to complete each survey once a day.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: { (_) in
+                _ = self.navigationController?.popToRootViewController(animated: true)
+            }))
+            present(alert, animated: true, completion: nil)
+        }
+        UserDefaults.standard.set(false, forKey: "surveyFirstTime")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -98,6 +98,21 @@ class CallViewController: UIViewController, UITableViewDataSource, UITableViewDe
             numbers = results as! [String]
         }
         tableView.reloadData()
+        
+        if let isFirstTime = UserDefaults.standard.value(forKey: "callFirstTime") as? Bool {
+            if (isFirstTime == false) {
+                print("not first time")
+            }
+        }
+        else {
+            print("first time")
+            let alert = UIAlertController(title: "Welcome to the Call Page!", message: "Use this tab to make no judgement calls directly from the app. Press the add caller button to add a name and phone number of someone you trust, and when you need to call just click on the person's name in the list.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: { (_) in
+                _ = self.navigationController?.popToRootViewController(animated: true)
+            }))
+            present(alert, animated: true, completion: nil)
+        }
+        UserDefaults.standard.set(false, forKey: "callFirstTime")
     }
 
     override func viewDidLoad() {

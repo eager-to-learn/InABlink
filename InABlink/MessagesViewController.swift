@@ -91,6 +91,21 @@ class MessagesViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         
         messageTitle.sizeToFit()
+        
+        if let isFirstTime = UserDefaults.standard.value(forKey: "messageFirstTime") as? Bool {
+            if (isFirstTime == false) {
+                print("not first time")
+            }
+        }
+        else {
+            print("first time")
+            let alert = UIAlertController(title: "Welcome to the Messages Page!", message: "This tab will display a photo of your choice and an encouraging message, written either by you or a loved one. The photo and message will appear when you enter a zone delegated in the map page. You can also make a no-judgement call from this page. Select your personal photo and message in the settings tab.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: { (_) in
+                _ = self.navigationController?.popToRootViewController(animated: true)
+            }))
+            present(alert, animated: true, completion: nil)
+        }
+        UserDefaults.standard.set(false, forKey: "messageFirstTime")
     }
     
     override func viewDidLoad() {
