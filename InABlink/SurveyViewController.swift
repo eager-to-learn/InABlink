@@ -25,6 +25,7 @@ class SurveyViewController: UIViewController, UITableViewDataSource {
         self.title = survey.name
         tableView.estimatedRowHeight = 150
         tableView.allowsSelection = false
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
 
