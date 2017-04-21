@@ -24,6 +24,7 @@
 		A50577981E92C737001A48EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A50577961E92C737001A48EA /* LaunchScreen.storyboard */; };
 		A50577A31E92C737001A48EA /* InABlinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50577A21E92C737001A48EA /* InABlinkTests.swift */; };
 		A50577AE1E92C737001A48EA /* InABlinkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50577AD1E92C737001A48EA /* InABlinkUITests.swift */; };
+		A5EA9D111EAAA6D300627676 /* Background Image.png in Resources */ = {isa = PBXBuildFile; fileRef = A5EA9D101EAAA6D300627676 /* Background Image.png */; };
 		CC0C50201E9C2AE500F45022 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0C501F1E9C2AE500F45022 /* SettingsViewController.swift */; };
 		CC0C50221E9C34B500F45022 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0C50211E9C34B500F45022 /* MessagesViewController.swift */; };
 		CCB7C3F21E995F1700659A9A /* CallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB7C3F11E995F1700659A9A /* CallViewController.swift */; };
@@ -71,6 +72,7 @@
 		A50577A91E92C737001A48EA /* InABlinkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InABlinkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A50577AD1E92C737001A48EA /* InABlinkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InABlinkUITests.swift; sourceTree = "<group>"; };
 		A50577AF1E92C737001A48EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5EA9D101EAAA6D300627676 /* Background Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Background Image.png"; sourceTree = "<group>"; };
 		CC0C501F1E9C2AE500F45022 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CC0C50211E9C34B500F45022 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		CCB7C3F11E995F1700659A9A /* CallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 		A505777E1E92C737001A48EA = {
 			isa = PBXGroup;
 			children = (
+				A5EA9D101EAAA6D300627676 /* Background Image.png */,
 				A50577891E92C737001A48EA /* InABlink */,
 				A50577A11E92C737001A48EA /* InABlinkTests */,
 				A50577AC1E92C737001A48EA /* InABlinkUITests */,
@@ -277,6 +280,7 @@
 			files = (
 				0EE7997B1EA9BA20001FC8CE /* Assets.xcassets in Resources */,
 				A50577981E92C737001A48EA /* LaunchScreen.storyboard in Resources */,
+				A5EA9D111EAAA6D300627676 /* Background Image.png in Resources */,
 				A50577901E92C737001A48EA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

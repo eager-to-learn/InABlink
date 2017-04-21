@@ -14,6 +14,8 @@ class SurveyListViewController: UIViewController,UITableViewDelegate,UITableView
 
     var surveys: [Survey] = []
     
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let surveyNames = UserDefaults.standard.stringArray(forKey: "surveyNames")!
@@ -23,6 +25,7 @@ class SurveyListViewController: UIViewController,UITableViewDelegate,UITableView
             surveys.append(NSKeyedUnarchiver.unarchiveObject(with: data) as! Survey)
         }
         
+        tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
     }
     
     
