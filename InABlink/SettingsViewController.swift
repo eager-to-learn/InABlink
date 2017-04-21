@@ -15,6 +15,8 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var messageBody: UITextView!
     @IBOutlet weak var imageView: UIImageView!
     
+    @IBOutlet weak var timePicker: UIDatePicker!
+    
     @IBAction func addPhoto(_ sender: UIButton) {
         picker.allowsEditing = false
         picker.sourceType = .photoLibrary
@@ -61,10 +63,21 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func setTimeButton(_ sender: UIButton) {
+        UserDefaults.standard.set(timePicker.date, forKey: "surveyTime")
+        let alert = UIAlertController(title: "Success!", message: "Survey time successfully set.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+            _ = self.navigationController?.popToRootViewController(animated: true)
+        }))
+        present(alert, animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        timePicker.datePickerMode = UIDatePickerMode.time
+        timePicker.timeZone = NSTimeZone.local
+        
         picker.delegate = self
         messageBody.delegate = self
         
@@ -83,6 +96,25 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         messageBody.layer.borderWidth = CGFloat(1)
         messageBody.layer.borderColor = UIColor.white.cgColor
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        if let isFirstTime = UserDefaults.standard.value(forKey: "settingsFirstTime") as? Bool {
+            if (isFirstTime == false) {
+                print("not first time")
+            }
+        }
+        else {
+            print("first time")
+            let alert = UIAlertController(title: "Welcome to the Settings Page!", message: "Use this tab to select a motivational photo from your photo album or by taking one with the camera and  fill out the message box. These will appear when you enter a delegated zone. You can also set the time of day you would prefer to receive notifications reminding you to take a survey.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: { (_) in
+                _ = self.navigationController?.popToRootViewController(animated: true)
+            }))
+            present(alert, animated: true, completion: nil)
+        }
+        UserDefaults.standard.set(false, forKey: "settingsFirstTime")
+    }
+    
     func dismissKeyboard() {
         view.endEditing(true)
         

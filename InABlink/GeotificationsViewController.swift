@@ -55,6 +55,22 @@ class GeotificationsViewController: UIViewController {
         loadAllGeotifications()
         stopMonitoringAll()
         startMonitoringAll()
+        
+        if let isFirstTime = UserDefaults.standard.value(forKey: "mapFirstTime") as? Bool {
+            if (isFirstTime == false) {
+                print("not first time")
+            }
+        }
+        else {
+            print("first time")
+            let alert = UIAlertController(title: "Welcome to the Map!", message: "Use this tab to add safe and dangerous locations using the map by pressing the + button in the top right corner. You will get notifications when you enter a zone.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: { (_) in
+                _ = self.navigationController?.popToRootViewController(animated: true)
+            }))
+            present(alert, animated: true, completion: nil)
+        }
+        UserDefaults.standard.set(false, forKey: "mapFirstTime")
+        
 
     }
     
