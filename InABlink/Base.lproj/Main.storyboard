@@ -406,7 +406,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.15686274510000001" green="0.6705882353" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Message" image="messages" selectedImage="messages" id="dS0-ba-eip"/>
+                    <tabBarItem key="tabBarItem" title="Message" image="messages-icon" selectedImage="messages-icon" id="dS0-ba-eip"/>
                     <connections>
                         <outlet property="imageView" destination="hXK-g3-rxO" id="dbB-Ph-Xpb"/>
                         <outlet property="messageBody" destination="EII-bd-ChH" id="eCF-Er-LeE"/>
@@ -714,7 +714,7 @@
             </objects>
             <point key="canvasLocation" x="3768.8000000000002" y="1039.4302848575712"/>
         </scene>
-        <!--Settings View Controller-->
+        <!--Settings-->
         <scene sceneID="u1g-ib-v5q">
             <objects>
                 <viewController id="sO4-iq-Nxn" customClass="SettingsViewController" customModule="InABlink" customModuleProvider="target" sceneMemberID="viewController">
@@ -791,7 +791,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.15686274510000001" green="0.6705882353" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="more" id="Lub-de-Ny1"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings-icon" selectedImage="settings-icon" id="Lub-de-Ny1"/>
                     <connections>
                         <outlet property="imageView" destination="Y2s-A9-ChW" id="8QT-se-rCy"/>
                         <outlet property="messageBody" destination="6ca-OQ-LSW" id="WPg-8n-FCS"/>
@@ -806,7 +806,7 @@
         <scene sceneID="zjE-Ga-hSK">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MLA-oy-CHo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="No Judgement Call" image="telephone-7" selectedImage="telephone-7" id="Gj8-i6-4ME"/>
+                    <tabBarItem key="tabBarItem" title="No Judgement Call" image="phone-icon" selectedImage="phone-icon" id="Gj8-i6-4ME"/>
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
@@ -831,7 +831,7 @@
         <scene sceneID="SfU-uM-tf0">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="k6U-AB-h6U" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" image="pin-map-7" selectedImage="pin-map-7" id="lbR-EW-6h0"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="geo-icon" selectedImage="geo-icon" id="lbR-EW-6h0"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="62f-K3-MtV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -854,7 +854,7 @@
         <scene sceneID="DrW-u8-Xyo">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UuZ-wf-ZVi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Surveys" image="book-cover-tick-7" selectedImage="book-cover-tick-7" id="MR7-Co-4ui"/>
+                    <tabBarItem key="tabBarItem" title="Surveys" image="survey-icon" selectedImage="survey-icon" id="MR7-Co-4ui"/>
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
@@ -901,9 +901,10 @@
     <resources>
         <image name="AddPin" width="150" height="150"/>
         <image name="CurrentLocation" width="15" height="15"/>
-        <image name="book-cover-tick-7" width="30" height="30"/>
-        <image name="messages" width="20" height="20"/>
-        <image name="pin-map-7" width="15" height="15"/>
-        <image name="telephone-7" width="30" height="30"/>
+        <image name="geo-icon" width="30" height="30"/>
+        <image name="messages-icon" width="30" height="30"/>
+        <image name="phone-icon" width="30" height="30"/>
+        <image name="settings-icon" width="30" height="30"/>
+        <image name="survey-icon" width="30" height="30"/>
     </resources>
 </document>
