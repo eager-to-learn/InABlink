@@ -120,20 +120,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let content = UNMutableNotificationContent()
         
         content.title = eventType.message
-        content.subtitle = "You can do it!" //TODO - read from UserDefaults
-        content.body = "Make a No Judgement Call"
-        content.sound = UNNotificationSound.default()
-        
-        //To present image in notification
-        if let path = Bundle.main.path(forResource: "little boy", ofType: "jpg") {
-            let url = URL(fileURLWithPath: path)
-            do {
-                let attachment = try UNNotificationAttachment(identifier: "sampleImage", url: url, options: nil)
-                content.attachments = [attachment]
-            } catch {
-                print("attachment not found.")
+        content.subtitle = "Make a No Judgement Call"
+        if let message = UserDefaults.standard.value(forKeyPath: "message") {
+            content.body = String(describing: message)
+        }
+        else {
+            if eventType == .dangerous {
+                content.body = "I have many people I can reach out when I need them"
+            }
+            else {
+                content.body = "I'm entering a place that supports my efforts"
             }
         }
+
+        content.sound = UNNotificationSound.default()
         
         // Deliver the notification
         let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 1.0, repeats: false)
