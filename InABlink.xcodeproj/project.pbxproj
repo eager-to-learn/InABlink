@@ -13,6 +13,7 @@
 		0E7405A41E996C1E00974FD4 /* GeotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7405A11E996C1E00974FD4 /* GeotificationsViewController.swift */; };
 		0E7EFD4F1E9BF8FE007103BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7EFD4D1E9BF8FE007103BC /* AppDelegate.swift */; };
 		0E7EFD501E9BF8FE007103BC /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7EFD4E1E9BF8FE007103BC /* LandingViewController.swift */; };
+		0EE7997B1EA9BA20001FC8CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A50577941E92C737001A48EA /* Assets.xcassets */; };
 		1BF875D91E995BCA009A32AF /* SurveyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF875D81E995BCA009A32AF /* SurveyListViewController.swift */; };
 		1BF875DB1E995C5D009A32AF /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF875DA1E995C5D009A32AF /* Survey.swift */; };
 		1BF875DD1E995D5E009A32AF /* SurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF875DC1E995D5E009A32AF /* SurveyViewController.swift */; };
@@ -20,7 +21,6 @@
 		1BF875E11E996FF9009A32AF /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF875E01E996FF9009A32AF /* QuestionTableViewCell.swift */; };
 		1BF875E31E997796009A32AF /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF875E21E997796009A32AF /* Question.swift */; };
 		A50577901E92C737001A48EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A505778E1E92C737001A48EA /* Main.storyboard */; };
-		A50577951E92C737001A48EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A50577941E92C737001A48EA /* Assets.xcassets */; };
 		A50577981E92C737001A48EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A50577961E92C737001A48EA /* LaunchScreen.storyboard */; };
 		A50577A31E92C737001A48EA /* InABlinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50577A21E92C737001A48EA /* InABlinkTests.swift */; };
 		A50577AE1E92C737001A48EA /* InABlinkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50577AD1E92C737001A48EA /* InABlinkUITests.swift */; };
@@ -275,8 +275,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EE7997B1EA9BA20001FC8CE /* Assets.xcassets in Resources */,
 				A50577981E92C737001A48EA /* LaunchScreen.storyboard in Resources */,
-				A50577951E92C737001A48EA /* Assets.xcassets in Resources */,
 				A50577901E92C737001A48EA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
