@@ -82,7 +82,6 @@ class MessagesViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.reloadData()
         
         if let results = UserDefaults.standard.value(forKey: "image") {
-            imageView.contentMode = .scaleAspectFit
             imageView.image = UIImage(data:results as! Data)
         }
         

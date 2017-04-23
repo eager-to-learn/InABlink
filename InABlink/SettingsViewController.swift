@@ -50,7 +50,6 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        imageView.contentMode = .scaleAspectFit
         imageView.image = chosenImage
         
         let imageData = UIImagePNGRepresentation(chosenImage)
